@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="jquery.connector_html5.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <button id="add-btn">Add Div</button>
+    <p id="demo"></p>
+    <script>
+      var array = ["box1", "box2", "box3", "box4", "box5", "box6", "circle1"];
+
+      for (i = 0; i < array.length; i++) {
+        insert(array[i]);
+      }
+
+      for (let i = 0; i < array.length - 1; i++) {
+        $(function () {
+          $("#container").connector({
+            connectFrom: "#" + array[i],
+            connectTo: "#" + array[i + 1],
+          });
+        });
+      }
+
+      function insert(newid) {
+        $("#container").append(
+          '<div class="newdiv" id="xyz"><li>hello</li></div></div>'
+        );
+        document.getElementById("xyz").id = newid;
+      }
+
+      // $(function () {
+      //   $("#container").connector({
+      //     connectFrom: "#box1" ,
+      //     connectTo: "#box2",
+      //   });
+      // });
+    </script>
+
+    <style>
+      #container {
+        border: 2px solid black;
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-items: stretch;
+      }
+      .newdiv {
+        border: 1px solid rgb(118, 207, 148);
+        margin: auto;
+        padding: 10px;
+        font-size: large;
+        font-size: 30px;
+        z-index: 4;
+        text-align: center;
+        border-radius: 10px;
+        width: 300px;
+        height: 350px;
+        margin: 20px;
+        border: 2px solid black;
+        background-color: rgb(168, 221, 221);
+      }
+
+      #add-btn {
+        width: 200px;
+        height: 50px;
+        margin: 20px 0 0 50%;
+      }
+    </style>
+  </body>
+</html>
